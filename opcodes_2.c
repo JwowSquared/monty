@@ -2,6 +2,8 @@
 
 /**
 * op_pint - prints the value at the head of the stack
+* @stack: data structure to print from
+* @line_number: used in error message
 */
 void op_pint(stack_t **stack, unsigned int line_number)
 {
@@ -13,6 +15,8 @@ void op_pint(stack_t **stack, unsigned int line_number)
 
 /**
 * op_pop - removes top most element of the stack
+* @stack: data structure to remove from
+* @line_number: used in error message
 */
 void op_pop(stack_t **stack, unsigned int line_number)
 {
@@ -30,6 +34,8 @@ void op_pop(stack_t **stack, unsigned int line_number)
 	
 /**
 * op_swap - switches the positions of the top 2 elements of the stack
+* @stack: data structure to modify
+* @line_number: used in error message
 */
 void op_swap(stack_t **stack, unsigned int line_number)
 {
@@ -53,6 +59,8 @@ left = *stack;
 
 /**
 * op_add - combines the top 2 elements of the stack
+* @stack: data structure to modify
+* @line_number: used in error message
 */
 void op_add(stack_t **stack, unsigned int line_number)
 {
