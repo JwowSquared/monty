@@ -25,28 +25,29 @@ int main(int ac, char **av)
 		print_error("Error: Can't open file %s\n", NULL, av[1], NULL);
 
 	gm = malloc(sizeof(g_m));
-	if (gm == NULL)
+	buf = malloc(sizeof(char) * buf_s);
+	if (gm == NULL || buf == NULL)
 		print_error("Error: malloc failed\n", NULL, NULL, NULL);
 	gm->buf = &buf;
 	gm->val = &val;
 	gm->input = &input;
-	buf = malloc(sizeof(char) * buf_s);
-	if (buf == NULL)
-		print_error("Error: malloc failed\n", NULL, NULL, NULL);
 
 	while (fgets(buf, buf_s, input) != NULL)
 	{
 		op = buf;
 		while (*op == ' ')
 			op++;
-		for (i = 0; op[i] != ' ' && op[i] != '\n' && op[i];)
-			i++;
-		op[i] = '\0';
-		val = &op[i + 1];
-		if (!match_op(op, &stack, ln))
-			print_error("L%u: unknown instruction %s\n", &ln, op, &stack);
-		memset(buf, 0, buf_s);
+		if (*op != '#')
+		{
+			for (i = 0; op[i] != ' ' && op[i] != '\n' && op[i];)
+				i++;
+			op[i] = '\0';
+			val = &op[i + 1];
+			if (!match_op(op, &stack, ln))
+				print_error("L%u: unknown instruction %s\n", &ln, op, &stack);
+		}
 		ln++;
+		memset(buf, 0, buf_s);
 	}
 	cleanup(&stack);
 	exit(EXIT_SUCCESS);

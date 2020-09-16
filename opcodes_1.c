@@ -13,7 +13,6 @@ int match_op(char *op, stack_t **stack, unsigned int line_number)
 	int i = 0;
 	instruction_t i_t[] = {
 	{"\0", &op_nop},
-	{"#", &op_nop},
 	{"nop", &op_nop},
 	{"push", &op_push},
 	{"pall", &op_pall},
