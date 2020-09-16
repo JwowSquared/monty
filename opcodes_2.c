@@ -84,5 +84,6 @@ void op_pchar(stack_t **stack, unsigned int line_number)
 */
 void op_pstr(stack_t **stack, unsigned int line_number)
 {
-	//asd
+	(void)stack;
+	(void)line_number;
 }
