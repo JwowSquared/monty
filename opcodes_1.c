@@ -9,7 +9,7 @@ void op_push(stack_t **stack, unsigned int line_number)
 {
 	char *val = *gm->val;
 	int i;
-	stack_t *new;
+	stack_t *new, *itr;
 
 	(void)line_number;
 	while (*val == ' ')
@@ -25,12 +25,26 @@ void op_push(stack_t **stack, unsigned int line_number)
 	if (new == NULL)
 		print_error("Error: malloc failed\n", NULL, NULL, stack);
 
-	new->prev = NULL;
-	new->next = *stack;
 	new->n = atoi(val);
-	if (*stack != NULL)
+	new->prev = NULL;
+	new->next = NULL;
+
+	if (*stack == NULL)
+		*stack = new;
+	else if (gm->stack)
+	{
+		new->next = *stack;
 		(*stack)->prev = new;
-	*stack = new;
+		*stack = new;
+	}
+	else
+	{
+		itr = *stack;
+		while (itr->next != NULL)
+			itr = itr->next;
+		itr->next = new;
+		new->prev = itr;
+	}
 }
 
 /**

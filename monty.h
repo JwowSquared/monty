@@ -9,6 +9,7 @@
 
 /**
 * struct global_memory - pairs all needed globals into 1 variable
+* @stack: flag that keeps track of stack/queue modes
 * @val: pointer to integer value associated with push
 * @buf: pointer to buffer used to read lines from the input file
 * @input: pointer to file used for input
@@ -18,6 +19,7 @@
 */
 typedef struct global_memory
 {
+	int stack;
 	char **val;
 	char **buf;
 	FILE **input;

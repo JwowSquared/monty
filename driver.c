@@ -28,6 +28,7 @@ int main(int ac, char **av)
 	buf = malloc(sizeof(char) * buf_s);
 	if (gm == NULL || buf == NULL)
 		print_error("Error: malloc failed\n", NULL, NULL, NULL);
+	gm->stack = 1;
 	gm->buf = &buf;
 	gm->val = &val;
 	gm->input = &input;
