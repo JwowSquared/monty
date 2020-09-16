@@ -27,7 +27,7 @@ void op_pop(stack_t **stack, unsigned int line_number)
 	if (*stack != NULL)
 		(*stack)->prev = NULL;
 }
-
+	
 /**
 * op_swap - switches the positions of the top 2 elements of the stack
 */
@@ -38,7 +38,7 @@ void op_swap(stack_t **stack, unsigned int line_number)
 	if (stack == NULL || *stack == NULL || (*stack)->next == NULL)
 		print_error("L%d: can't swap, stack too short\n", &line_number, NULL, stack);
 
-	left = *stack;
+left = *stack;
 	right = left->next;
 
 	left->prev = left->next;
@@ -49,4 +49,19 @@ void op_swap(stack_t **stack, unsigned int line_number)
 	right->prev = NULL;
 
 	*stack = right;
+}
+
+/**
+* op_add - combines the top 2 elements of the stack
+*/
+void op_add(stack_t **stack, unsigned int line_number)
+{
+	int old;
+
+	if (stack == NULL || *stack == NULL || (*stack)->next == NULL)
+		print_error("L%d: can't add, stack too short\n", &line_number, NULL, stack);
+
+	old = (*stack)->n;
+	op_pop(stack, line_number);
+	(*stack)->n += old;
 }

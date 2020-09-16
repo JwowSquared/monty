@@ -20,7 +20,7 @@ int match_op(char *op, stack_t **stack, unsigned int line_number)
 	{"pint", &op_pint},
 	{"pop", &op_pop},
 	{"swap", &op_swap},
-	{"add", NULL},
+	{"add", &op_add},
 	{NULL, NULL},
 	};
 
