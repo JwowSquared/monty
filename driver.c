@@ -14,7 +14,7 @@ int main(int ac, char **av)
 {
 	char *op, *buf = NULL, *val = NULL;
 	unsigned int i, ln = 1;
-	size_t buf_s = 16384;
+	size_t buf_s = 1024;
 	stack_t *stack = NULL;
 	FILE *input = NULL;
 

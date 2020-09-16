@@ -10,12 +10,9 @@ int isdigits(char *str)
 {
 	int i = 0;
 
-	if (str[i] == '-')
-		i++;
-
 	while (str[i])
 	{
-		if (str[i] < '0' || str[i] > '9')
+		if ((str[i] < '0' || str[i] > '9') && str[i] != '-')
 			return (0);
 		i++;
 	}
