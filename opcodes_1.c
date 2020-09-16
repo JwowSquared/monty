@@ -56,7 +56,7 @@ void op_push(stack_t **stack, unsigned int line_number)
 	val[i] = '\0';
 
 	if (!isdigits(val))
-		print_error("L%d: usage: push integer\n", &line_number, NULL, stack);
+		print_error("L%u: usage: push integer\n", &line_number, NULL, stack);
 
 	new = malloc(sizeof(stack_t));
 	if (new == NULL)

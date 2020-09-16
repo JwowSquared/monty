@@ -44,7 +44,7 @@ int main(int ac, char **av)
 		op[i] = '\0';
 		val = &op[i + 1];
 		if (!match_op(op, &stack, ln))
-			print_error("L%d: unknown instruction %s\n", &ln, op, &stack);
+			print_error("L%u: unknown instruction %s\n", &ln, op, &stack);
 		memset(buf, 0, buf_s);
 		ln++;
 	}
