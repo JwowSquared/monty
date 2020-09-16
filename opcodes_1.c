@@ -44,7 +44,6 @@ int match_op(char *op, stack_t **stack, unsigned int line_number)
 */
 void op_push(stack_t **stack, unsigned int line_number)
 {
-	extern g_m *gm;
 	char *val = *gm->val;
 	int i;
 	stack_t *new;

@@ -1,5 +1,6 @@
 #include "monty.h"
 
+
 /**
 * op_pint - prints the value at the head of the stack
 * @stack: data structure to print from
@@ -31,7 +32,7 @@ void op_pop(stack_t **stack, unsigned int line_number)
 	if (*stack != NULL)
 		(*stack)->prev = NULL;
 }
-	
+
 /**
 * op_swap - switches the positions of the top 2 elements of the stack
 * @stack: data structure to modify
@@ -44,7 +45,7 @@ void op_swap(stack_t **stack, unsigned int line_number)
 	if (stack == NULL || *stack == NULL || (*stack)->next == NULL)
 		print_error("L%d: can't swap, stack too short\n", &line_number, NULL, stack);
 
-left = *stack;
+	left = *stack;
 	right = left->next;
 
 	left->prev = left->next;

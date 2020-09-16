@@ -1,6 +1,6 @@
 #include "monty.h"
 
-/* Global declaration */
+/* Global Declaration */
 g_m *gm = NULL;
 
 /**
