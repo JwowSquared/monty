@@ -68,16 +68,13 @@ void op_pchar(stack_t **stack, unsigned int line_number)
 	int c;
 
 	if (stack == NULL || *stack == NULL)
-		print_error("L%u: can't pchar, stack empty", &line_number, NULL, stack);
+		print_error("L%u: can't pchar, stack empty\n", &line_number, NULL, stack);
 
 	c = (*stack)->n;
 	if (c < 0 || c > 127)
 		print_error("L%u: can't pchar, value out of range\n", &line_number, NULL, stack);
 
-	if (!c)
-		printf("\n");
-	else
-		printf("%c\n", c);
+	printf("%c\n", c);
 }
 
 /**
