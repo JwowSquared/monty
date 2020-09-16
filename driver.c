@@ -19,7 +19,7 @@ int main(int ac, char **av)
 	FILE *input = NULL;
 
 	if (ac != 2)
-		print_error("Usage: monty file\n", NULL, NULL, NULL);
+		print_error("USAGE: monty file\n", NULL, NULL, NULL);
 	input = fopen(av[1], "r");
 	if (input == NULL)
 		print_error("Error: Can't open file %s\n", NULL, av[1], NULL);
@@ -44,12 +44,12 @@ int main(int ac, char **av)
 		op[i] = '\0';
 		val = &op[i + 1];
 		if (!match_op(op, &stack, ln))
-			print_error("ERR|L%d: unknown instruction %s\n", &ln, op, &stack);
+			print_error("L%d: unknown instruction %s\n", &ln, op, &stack);
 		memset(buf, 0, buf_s);
 		ln++;
 	}
 	cleanup(&stack);
-	return (0);
+	exit(EXIT_SUCCESS);
 }
 
 /**
