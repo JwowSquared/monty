@@ -83,6 +83,25 @@ void op_pchar(stack_t **stack, unsigned int line_number)
 */
 void op_pstr(stack_t **stack, unsigned int line_number)
 {
-	(void)stack;
+	int c;
+	stack_t *itr;
+
 	(void)line_number;
+	if (stack == NULL || *stack == NULL)
+	{
+		putchar('\n');
+		return;
+	}
+
+	itr = *stack;
+
+	while (itr != NULL)
+	{
+		c = itr->n;
+		if (c < ' ' || c > '~')
+			break;
+		putchar(c);
+		itr = itr->next;
+	}
+	putchar('\n');
 }
