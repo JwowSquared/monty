@@ -86,3 +86,28 @@ void op_rotl(stack_t **stack, unsigned int line_number)
 	old->prev = itr;
 	old->next = NULL;
 }
+
+/**
+* op_rotr - moves back element to top, becomes new front
+* @stack: data structure to be modified
+* @line_number: used in error message
+*/
+void op_rotr(stack_t **stack, unsigned int line_number)
+{
+	stack_t *itr;
+
+	(void)line_number;
+	if (stack == NULL || *stack == NULL || (*stack)->next == NULL)
+		return;
+
+	itr = (*stack)->next;
+
+	while (itr->next != NULL)
+		itr = itr->next;
+	itr->prev->next = NULL;
+	itr->prev = NULL;
+	itr->next = *stack;
+	(*stack)->prev = itr;
+	*stack = itr;
+}
+
