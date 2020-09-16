@@ -71,7 +71,7 @@ void op_pchar(stack_t **stack, unsigned int line_number)
 		print_error("L%u: can't pchar, stack empty", &line_number, NULL, stack);
 
 	c = (*stack)->n;
-	if (c < ' ' || c > '~')
+	if (c < 0 || c > 127)
 		print_error("L%u: can't pchar, value out of range\n", &line_number, NULL, stack);
 
 	printf("%c\n", c);
