@@ -62,13 +62,13 @@ int main(int ac, char **av)
 void print_error(char *prompt, unsigned int *ln, char *op, stack_t **stack)
 {
 	if (ln == NULL && op == NULL)
-		printf("%s", prompt);
+		fprintf(stderr, "%s", prompt);
 	else if (op == NULL)
-		printf(prompt, *ln);
+		fprintf(stderr, prompt, *ln);
 	else if (ln == NULL)
-		printf(prompt, op);
+		fprintf(stderr, prompt, op);
 	else
-		printf(prompt, *ln, op);
+		fprintf(stderr, prompt, *ln, op);
 
 	cleanup(stack);
 	exit(EXIT_FAILURE);
