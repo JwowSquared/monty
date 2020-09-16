@@ -74,7 +74,10 @@ void op_pchar(stack_t **stack, unsigned int line_number)
 	if (c < 0 || c > 127)
 		print_error("L%u: can't pchar, value out of range\n", &line_number, NULL, stack);
 
-	printf("%c\n", c);
+	if (c < ' ' || c > '~')
+		printf("\n");
+	else
+		printf("%c\n", c);
 }
 
 /**
