@@ -59,18 +59,30 @@ void op_swap(stack_t **stack, unsigned int line_number)
 }
 
 /**
-* op_add - combines the top 2 elements of the stack
+* op_pchar - prints the top element of a stack as a char
 * @stack: data structure to modify
 * @line_number: used in error message
 */
-void op_add(stack_t **stack, unsigned int line_number)
+void op_pchar(stack_t **stack, unsigned int line_number)
 {
-	int old;
+	int c;
 
-	if (stack == NULL || *stack == NULL || (*stack)->next == NULL)
-		print_error("L%u: can't add, stack too short\n", &line_number, NULL, stack);
+	if (stack == NULL || *stack == NULL)
+		print_error("L%u: can't pchar, stack empty", &line_number, NULL, stack);
 
-	old = (*stack)->n;
-	op_pop(stack, line_number);
-	(*stack)->n += old;
+	c = (*stack)->n;
+	if (c < ' ' || c > '~')
+		print_error("L%u: can't pchar, value out of range\n", &line_number, NULL, stack);
+
+	printf("%c\n", c);
+}
+
+/**
+* op_pstr - prints a string starting at the top stack element
+* @stack: data structure to modify
+* @line_number: used in error message
+*/
+void op_pstr(stack_t **stack, unsigned int line_number)
+{
+	//asd
 }
