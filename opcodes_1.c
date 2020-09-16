@@ -1,48 +1,6 @@
 #include "monty.h"
 
 /**
-* match_op - matches given opcode with its function
-* @op: opcode to match with a given
-* @stack: parameter to pass to i_t.f
-* @line_number: parameter to pass to i_t.f
-*
-* Return: 1 if match found, else 0
-*/
-int match_op(char *op, stack_t **stack, unsigned int line_number)
-{
-	int i = 0;
-	instruction_t i_t[] = {
-	{"\0", &op_nop},
-	{"nop", &op_nop},
-	{"push", &op_push},
-	{"pall", &op_pall},
-	{"pint", &op_pint},
-	{"pop", &op_pop},
-	{"swap", &op_swap},
-	{"add", &op_add},
-	{"sub", &op_sub},
-	{"div", &op_div},
-	{"mul", &op_mul},
-	{"mod", &op_mod},
-	{"pchar", &op_pchar},
-	{"pstr", &op_pstr},
-	{NULL, NULL},
-	};
-
-	while (i_t[i].f != NULL)
-	{
-		if (!strcmp(i_t[i].opcode, op))
-		{
-			i_t[i].f(stack, line_number);
-			return (1);
-		}
-		i++;
-	}
-
-	return (0);
-}
-
-/**
 * op_push - handles opcode push
 * @stack: stack data structure to be modified
 * @line_number: used when printing an error message
@@ -102,4 +60,29 @@ void op_pall(stack_t **stack, unsigned int line_number)
 		printf("%d\n", itr->n);
 		itr = itr->next;
 	}
+}
+
+/**
+* op_rotl - moves top element to back, 2nd element becomes top
+* @stack: data structure to be modified
+* @line_number: used in error message
+*/
+void op_rotl(stack_t **stack, unsigned int line_number)
+{
+	stack_t *itr, *old;
+
+	(void)line_number;
+	if (stack == NULL || *stack == NULL || (*stack)->next == NULL)
+		return;
+
+	old = *stack;
+	itr = (*stack)->next;
+	itr->prev = NULL;
+	*stack = itr;
+
+	while (itr->next != NULL)
+		itr = itr->next;
+	itr->next = old;
+	old->prev = itr;
+	old->next = NULL;
 }

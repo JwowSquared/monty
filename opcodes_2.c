@@ -60,18 +60,18 @@ void op_swap(stack_t **stack, unsigned int line_number)
 /**
 * op_pchar - prints the top element of a stack as a char
 * @stack: data structure to modify
-* @line_number: used in error message
+* @l_n: used in error message
 */
-void op_pchar(stack_t **stack, unsigned int line_number)
+void op_pchar(stack_t **stack, unsigned int l_n)
 {
 	int c;
 
 	if (stack == NULL || *stack == NULL)
-		print_error("L%u: can't pchar, stack empty\n", &line_number, NULL, stack);
+		print_error("L%u: can't pchar, stack empty\n", &l_n, NULL, stack);
 
 	c = (*stack)->n;
 	if (c < ' ' || c > '~')
-		print_error("L%u: can't pchar, value out of range\n", &line_number, NULL, stack);
+		print_error("L%u: can't pchar, value out of range\n", &l_n, NULL, stack);
 
 	printf("%c\n", c);
 }
